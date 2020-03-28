@@ -15,7 +15,7 @@ def helper(string, pattern):
     end_char = string[end]
     if end_char in result:
       result[end_char] -= 1
-ZZs      if result[end_char] == 0:
+      if result[end_char] == 0:
         match += 1
   
     if match == len(pattern):
