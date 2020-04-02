@@ -10,8 +10,7 @@ def helper(arr):
     if i > 0 and arr[i] == arr[i-1]:
       continue
     sort_the_triplet(arr, -arr[i], i+1, triplets)
-  return triplets
-
+ 
 def sort_the_triplet(arr, target, start, triplets):
   end = len(arr) - 1
   while start < end:
