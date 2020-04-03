@@ -5,6 +5,32 @@
 
 
 def helper(arr, target):
+  arr.sort()
+  quadruplets = []
+  for i in range(len(arr)):
+    for j in range(i+1, len(arr)):
+      # if j > 0 and arr[j] == arr[j-1]:
+      #   continue
+      search_pairs(arr, arr[i], arr[j], j+1, quadruplets, target)
+  return quadruplets
+
+
+def search_pairs(arr, first, second, start, quadruplets, target):
+  end = len(arr) - 1
+  while start < end:
+    temp = first + second + arr[start] + arr[end]
+    if temp == target:
+      quadruplets.append([first, second, arr[start], arr[end]])
+      start += 1
+      end -= 1
+      while start < end and arr[start] == arr[start-1]:
+        start += 1
+      while start < end and arr[end] == arr[end+1]:
+        end -= 1
+    elif temp < target:
+      start += 1
+    else:
+      end -= 1
   
 
 
