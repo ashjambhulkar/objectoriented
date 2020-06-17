@@ -16,6 +16,8 @@ class Solution:
 
       if not left_tree or not right_tree:
         return False
+
+      g
       
       return helper()
 

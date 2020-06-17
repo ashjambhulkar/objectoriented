@@ -13,3 +13,5 @@ def helper(start, end, wordlist):
   while queue:
     node, depth = queue.popleft()
     dist[node] = depth
+    for i in range(len(node)):
+      

@@ -20,3 +20,6 @@ def bfs(forest, sr, sc, tr, tc):
         queue.append((nr, nc, d+1))
 
   return -1
+
+
+  
