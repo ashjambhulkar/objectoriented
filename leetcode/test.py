@@ -1,7 +1,23 @@
-class Solution(object):
-    def middleNode(self, head):
-        slow = fast = head
-        while fast and fast.next:
-            slow = slow.next
-            fast = fast.next.next
-        return slow
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+class Solution:
+	def searchBST(self, root: TreeNode, val: int) -> TreeNode:
+		if not root:
+			return
+		if root.val == val:
+			return root
+		if root.val > val:
+			return self.searchBST(root.left, val)
+		else:
+			return self.searchBST(root.right, val)
+
+root = TreeNode(2)
+root.left = TreeNode(1)
+root.right = TreeNode(3)
+
+Solution().searchBST(root, 1)
