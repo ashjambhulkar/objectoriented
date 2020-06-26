@@ -12,14 +12,14 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def isValidBST(self, root: TreeNode) -> bool:
-        def helper(root, left=float("-inf"), right=float("inf")):
-            if not root:
-                return True
-            if root.val <= left or root.val >= right:
-                return False
-            return helper(root.left, left, root.val) and helper(root.right, root.val, right)
-        return helper(root)
+  def isValidBST(self, root: TreeNode) -> bool:
+		def helper(root, left=float("-inf"), right=float("inf")):
+			if not root:
+					return True
+			if root.val <= left or root.val >= right:
+					return False
+			return helper(root.left, left, root.val) and helper(root.right, root.val, right)
+		return helper(root)
         
 # @lc code=end
 
