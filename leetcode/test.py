@@ -1,30 +1,36 @@
-import collections
+class ListNode:
+  def __init__(self, val, next=None):
+    self.val = val
+    self.next = next
 
-def maxArea(s, t):
-  start = 0
-  string = ""
-  count = float("inf")
-  hashmap = collections.Counter(list(t))
-  for end in range(len(s)):
-    end_char = s[end]
-    if end_char in hashmap:
-      hashmap[end_char] -= 1
-      if hashmap[end_char] == 0:
-        del hashmap[end_char]
-    if len(hashmap) == 0:
-      if end-start+1 < count:
-        string = s[start:end+1]
-        count = end-start+1
-        start = end+1
-        hashmap = collections.Counter(list(t))
-        while start < len(s):
-          if s[start] in hashmap:
-            break
-          start += 1
-  return string
+class Solution:
+  def helper(self, left, right):
+    result = left
+    while left and right:
+      if right.val < left.val:
+        temp = left.next
+        test = left.val
+        left.val = right.val
+        left.next = ListNode(test)
+        left.next.next = temp
+        right = right.next
+      left = left.next
+    while result:
+      print(result.val)
+      result = result.next
+       
 
 
-s = "ADOBECODEBANC"
-t = "DEA"
 
-print(maxArea(s, t))
+
+a = [1,2,4]
+b = [1,3,4]
+left = ListNode(1)
+left.next = ListNode(2)
+left.next.next = ListNode(4)
+
+right = ListNode(1)
+right.next = ListNode(3)
+right.next.next = ListNode(4)
+
+print(Solution().helper(left, right))
