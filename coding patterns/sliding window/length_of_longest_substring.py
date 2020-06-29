@@ -3,25 +3,27 @@
 # Output: 5
 # Explanation: Replace the two 'c' with 'b' to have a longest repeating substring "bbbbb".
 
+import collections
+
+
 def helper(string, k):
-  if not string:
-    return 0
+  hashmap = collections.defaultdict(int)
+  result = float("-inf")
   start = 0
-  count = 0
-  length = 0
-  result = {}
   for end in range(len(string)):
     end_char = string[end]
-    if end_char not in result:
-      result[end_char] = 0
-    result[end_char] += 1
-    count = max(count, result[end_char])
-    if (end-start+1  - count) > k:
+    hashmap[end_char] += 1
+    if len(hashmap) == k:
+      result = max(result, end-start+1)
+
+    while len(hashmap) > k:
       start_char = string[start]
-      result[start_char] -= 1
+      hashmap[start_char] -= 1
+      if hashmap[start_char] == 0:
+        del hashmap[start_char]
       start += 1
-    length = max(length, end-start+1)
-  return length
+
+  return result
 
 string = "bbasef"
 k = 2

@@ -3,26 +3,29 @@
 # Output: 6
 # Explanation: Replace the '0' at index 5 and 8 to have the longest contiguous subarray of 1s having length 6.
 
-def helper(arr, k):
-  start = 0
+import collections
+
+
+def helper(string, k):
+  hashmap = {0: 0, 1: 0}
   count = 0
-  result = {}
-  length = 0
-  for end in range(len(arr)):
-    end_num = arr[end]
-    if end_num not in result:
-      result[end_num] = 0
-    result[end_num] += 1
-    count = max(count, result[end_num])
-    if end-start+1 - count > k:
-      start_num = arr[start]
-      result[start_num] -= 1
+  result = 0
+  start = 0
+  for end in range(len(string)):
+    end_char = string[end]
+    hashmap[end_char] += 1
+    if hashmap[0] == k:
+      result = max(result, end-start+1)
+    while hashmap[0] > k:
+      start_char = string[start]
+      if start_char == 0:
+        hashmap[0] -= 1
       start += 1
-    length = max(length, end-start+1)
-  return length
+  return result
 
 
-arr = [0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1]
-k = 3
+
+arr = [0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1]
+k = 2
 print(helper(arr, k))
 

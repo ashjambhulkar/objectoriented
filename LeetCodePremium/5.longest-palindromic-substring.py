@@ -13,7 +13,13 @@ class Solution:
             if self.checkpalindrom(s[start:end+1]):
                 if len(result) < end-start+1:
                     result = s[start:end+1]
-                    start = end + 1
+                else:
+                    temp = start
+                    while temp < end:
+                        if end-temp+1 > len(result):
+                            result = s[temp:end+1]
+                        temp += 1
+                    start += 1
         return result
 
     def checkpalindrom(self, string):
