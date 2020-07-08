@@ -40,3 +40,33 @@ def topological_sort(vertices, edges):
 print(topological_sort(4, [[3, 2], [3, 0], [2, 0], [2, 1]]))
 print(topological_sort(5, [[4, 2], [4, 3], [2, 0], [2, 1], [3, 1]]))
 print(topological_sort(7, [[6, 4], [6, 2], [5, 3], [5, 4], [3, 0], [3, 1], [3, 2], [4, 1]]))
+
+
+
+def helper(vertices ,edges):
+  graph = collections.defaultdict(list)
+  inchild = collections.defaultdict(int)
+
+  for edge in edges:
+    graph[edge[0]].append(edge[1])
+    inchild[edge[1]] += 1
+
+  start = collections.deque()
+
+  for key, value in inchild.item():
+    start.append(value)
+  
+  visited = set()
+  result = []
+  while start:
+    node =  start.popleft()
+    result.add(node)
+    for x in graph[node]:
+      inchild[node] -= 1
+      if inchild[node] == 0:
+        start.append(node)
+    
+    if len(result) != vertices:
+      return []
+    return result
+  
