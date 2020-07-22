@@ -33,7 +33,7 @@ class WordDictionary:
             if node.end:
                 self.result = True
         
-        return
+            return
 
         if word[0] == ".":
             for n in node.children.values():

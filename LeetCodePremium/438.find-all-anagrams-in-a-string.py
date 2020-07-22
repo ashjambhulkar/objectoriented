@@ -7,26 +7,25 @@
 # @lc code=start
 class Solution:
     def findAnagrams(self, s: str, p: str) -> List[int]:
-        result = []
+        pdict = collections.Counter(p)
+        sdict = collections.Counter(s[:len(p)])
         start = 0
-        hashmap = collections.defaultdict(int)
-        match = 0
-        for end in range(len(s)):
-            end_char = s[end]
-            hashmap[end_char] += 1
-            if end_char in p:
-                match += 1
-            while len(hashmap) > len(p):
-                start_char = s[start]
-                hashmap[start_char] -= 1
-                if hashmap[start_char] == 0:
-                    del hashmap[start_char]
-                if start_char in p:
-                    match -= 1
-                start += 1
-            if match == len(p):
+        end = len(p)
+        result = []
+        while end <= len(s):
+            if pdict == sdict:
                 result.append(start)
+            
+            sdict[s[start]] -= 1
+            if sdict[s[start]] <= 0:
+                sdict.pop(s[start])
+            
+            if end < len(s):
+                sdict[s[end]] += 1
+            end += 1
+            start += 1
+
         return result
-        
+       
 # @lc code=end
 
