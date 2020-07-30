@@ -10,6 +10,7 @@ class MedianFinder:
     def __init__(self):
         self.small = []
         self.large = []
+        
 
     def addNum(self, num: int) -> None:
         #here if the two arrays are of same size then we will first insert into the small array and then pop and push into the large one. We are mainly focusing on the large array instead of focusing on the small one
@@ -18,6 +19,8 @@ class MedianFinder:
         #here we are performing the reverse of the above logic
         else:
             heapq.heappush(self.small, -heapq.heappushpop(self.large, num))
+
+
             
     def findMedian(self) -> float:
         if len(self.small) == len(self.large):

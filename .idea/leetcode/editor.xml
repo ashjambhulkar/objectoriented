@@ -3,6 +3,22 @@
   <component name="LeetcodeEditor">
     <option name="projectConfig">
       <map>
+        <entry key="$PROJECT_DIR$/LeetCodePremium/leetcode/editor/en/[2]Add Two Numbers.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/LeetCodePremium/leetcode/editor/en/[2]Add Two Numbers.py" />
+              <option name="questionId" value="2" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/LeetCodePremium/leetcode/editor/en/[946]Validate Stack Sequences.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/LeetCodePremium/leetcode/editor/en/[946]Validate Stack Sequences.py" />
+              <option name="questionId" value="983" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="/var/folders/5t/q24jlgrn0xbcwhsnm1trh3nh0000gn/T/leetcode/editor/en/[200]Number of Islands.py">
           <value>
             <LeetcodeEditor>
