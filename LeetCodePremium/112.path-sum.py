@@ -13,17 +13,17 @@
 #         self.right = right
 class Solution:
     def hasPathSum(self, root: TreeNode, sum: int) -> bool:
-        if not root:
-            return False
-        def helper(root, sum):
-            if not root:
-                return 
-            sum -= root.val
-            if not root.left and not root.right:
-                return sum == 0
-            return helper(root.left, sum) or helper(root.right, sum)
-        return helper(root, sum)
-        
+        # if not root:
+        #     return False
+        # def helper(root, sum):
+        #     if not root:
+        #         return 
+        #     sum -= root.val
+        #     if not root.left and not root.right:
+        #         return sum == 0
+        #     return helper(root.left, sum) or helper(root.right, sum)
+        # return helper(root, sum)
+
         
 # @lc code=end
 
