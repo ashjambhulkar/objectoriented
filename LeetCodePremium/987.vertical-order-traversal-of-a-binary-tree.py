@@ -14,27 +14,22 @@
 class Solution:
     def verticalTraversal(self, root: TreeNode) -> List[List[int]]:
         result = collections.defaultdict(list)
-        left, right = float("inf"), float("-inf") 
-        def helper(root, row, col):
-            nonlocal left, right
+        def helper(root, row, depth):
+            nonlocal result
             if not root:
-                return
-            
-            result[col].append((row, root.val))
-            left = min(left, col)
-            right = max(right, col)
-            helper(root.left, row+1, col-1)
-            helper(root.right, row+1, col+1)
+                return 
+            result[depth].append((row, root.val))
+            helper(root.left, row+1, depth-1)
+            helper(root.right, row+1, depth+1)
         helper(root, 0, 0)
-        final = []
-        count = 0
-        for i in range(left, right+1):
-            result[i].sort()
-            final.append([])
-            for x in result[i]:
-                key, value = x
-                final[count].append(value)
-            count += 1
-        return final
+        temp = []
+        for x in sorted(result):
+            temp.append([])
+            [temp[-1].append(y) for x, y in sorted(result[x])]
+        return temp
+
+
+
+
 # @lc code=end
 

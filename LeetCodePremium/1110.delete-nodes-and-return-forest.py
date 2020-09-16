@@ -13,24 +13,25 @@
 #         self.right = right
 class Solution:
     def delNodes(self, root: TreeNode, to_delete: List[int]) -> List[TreeNode]:
-        hashset = set(to_delete)
-        result = []
-        def helper(root, parent):
-            if not root:
-                return
-            if root.val in hashset:
-                root.left = helper(root.left, False)
-                root.right = helper(root.right, False)
-                return None
-            else:
-                if not parent:
-                    result.append(root)
-                root.left = helper(root.left, True)
-                root.right = helper(root.right, True)
-                return root
-        helper(root, False)
-        return result
+        # hashset = set(to_delete)
+        # result = []
+        # def helper(root, parent):
+        #     if not root:
+        #         return
+        #     if root.val in hashset:
+        #         root.left = helper(root.left, False)
+        #         root.right = helper(root.right, False)
+        #         return None
+        #     else:
+        #         if not parent:
+        #             result.append(root)
+        #         root.left = helper(root.left, True)
+        #         root.right = helper(root.right, True)
+        #         return root
+        # helper(root, False)
+        # return result
 
-#here the first return None is actually returning the none to divide the tree as it will not return the root whereas the second return is actually returning the root to create the tree. if  root.val is in hashset then we are saying that both the child does not have the parent and can be treated as differetn tree.
+#here the first return None is actually returning the none to divide the tree as it will not return the root whereas the second return is actually returning the root to create the tree. if  root.val is in hashset then we are saying that both the child does not have the parent and can be treated as differnt tree.
+
 # @lc code=end
 

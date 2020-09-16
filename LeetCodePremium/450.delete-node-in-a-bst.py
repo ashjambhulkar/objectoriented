@@ -14,19 +14,18 @@
 class Solution:
     def deleteNode(self, root: TreeNode, key: int) -> TreeNode:
         if not root:
-            return None
-        
-        if root.val > key:
+            return
+        if key < root.val:
             root.left = self.deleteNode(root.left, key)
-        elif root.val < key:
+        elif key > root.val:
             root.right = self.deleteNode(root.right, key)
         else:
-            if not root.right and not root.left:
+            if not root.left and not root.right:
                 root = None
             elif root.right:
                 root.val = self.successor(root)
                 root.right = self.deleteNode(root.right, root.val)
-            else:
+            elif root.left:
                 root.val = self.predecessor(root)
                 root.left = self.deleteNode(root.left, root.val)
         return root
@@ -42,5 +41,8 @@ class Solution:
         while root.right:
             root = root.right
         return root.val
+
+
+
 # @lc code=end
 

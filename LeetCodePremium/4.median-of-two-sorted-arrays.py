@@ -6,7 +6,7 @@
 
 # @lc code=start
 class Solution:
-    def findMedianSortedArrays(self, a: List[int], b: List[int]) -> float:
+    def findMedianSortedArrays(self, A: List[int], B: List[int]) -> float:
         if len(A) > len(B):
             A, B = B, A
 

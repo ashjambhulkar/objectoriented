@@ -1,7 +1,7 @@
 #
-# @lc app=leetcode id=938 lang=python3
+# @lc app=leetcode id=230 lang=python3
 #
-# [938] Range Sum of BST
+# [230] Kth Smallest Element in a BST
 #
 
 # @lc code=start
@@ -12,18 +12,20 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def rangeSumBST(self, root: TreeNode, L: int, R: int) -> int:
-        total = 0 
+    def kthSmallest(self, root: TreeNode, k: int) -> int:
+        count = 0
+        result = 0
         def helper(root):
-            nonlocal total
+            nonlocal result,count
             if not root:
                 return
             helper(root.left)
-            if L <= root.val <= R:
-                total += root.val
+            count += 1
+            if count == k:
+                result = root.val
             helper(root.right)
         helper(root)
-        return total
+        return result
         
 # @lc code=end
 

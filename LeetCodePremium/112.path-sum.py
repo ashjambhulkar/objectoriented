@@ -24,6 +24,14 @@ class Solution:
         #     return helper(root.left, sum) or helper(root.right, sum)
         # return helper(root, sum)
 
+
+        if not root:
+            return False
+        sum -= root.val
+        if not root.left and not root.right and sum == 0:
+            return True
+        return self.hasPathSum(root.left, sum) or self.hasPathSum(root.right, sum)
+
         
 # @lc code=end
 

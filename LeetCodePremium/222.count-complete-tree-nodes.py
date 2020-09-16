@@ -1,7 +1,7 @@
 #
-# @lc app=leetcode id=938 lang=python3
+# @lc app=leetcode id=222 lang=python3
 #
-# [938] Range Sum of BST
+# [222] Count Complete Tree Nodes
 #
 
 # @lc code=start
@@ -12,18 +12,17 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def rangeSumBST(self, root: TreeNode, L: int, R: int) -> int:
-        total = 0 
+    def countNodes(self, root: TreeNode) -> int:
+        count = 0
         def helper(root):
-            nonlocal total
+            nonlocal count
             if not root:
-                return
+                return 
+            count += 1
             helper(root.left)
-            if L <= root.val <= R:
-                total += root.val
             helper(root.right)
         helper(root)
-        return total
+        return count
         
 # @lc code=end
 

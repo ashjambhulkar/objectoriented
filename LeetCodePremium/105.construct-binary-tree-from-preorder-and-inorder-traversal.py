@@ -13,7 +13,6 @@
 #         self.right = right
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
-        print(len(inorder))
         def helper(low, high):
             if low > high:
                 return None
@@ -22,10 +21,9 @@ class Solution:
             root = TreeNode(val)
             index = inorder.index(val)
 
-            root.left = self.buildTree(low, index-1)
-            root.right = self.buildTree(index+1, high)
+            root.left = helper(low, index-1)
+            root.right = helper(index+1, high)
             return root
 
-        helper(0, len(inorder)-1)
+        return helper(0, len(inorder)-1)
 # @lc code=end
-

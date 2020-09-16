@@ -5,11 +5,14 @@
 #
 
 # @lc code=start
+
+import collections
+
 class Solution:
-    def subarraySum(self, nums: List[int], k: int) -> int:
+    def subarraySum(self, nums, k):
         # hashtable to track the sum of the integers from start
         sample  = collections.defaultdict(int)
-        # initialize the first integer if the number is equalt to the target
+        # initialize the first integer if the number is equal to the target
         sample[0] = 1
         count = 0
         total = 0
@@ -23,6 +26,9 @@ class Solution:
             # incrementing the sample hash with the new total value
             sample[total] += 1  
         return count
+
+
+print(Solution().subarraySum([1,1,1],2))
         
 # @lc code=end
 

@@ -14,16 +14,17 @@
 class Solution:
     def sortedArrayToBST(self, nums: List[int]) -> TreeNode:
         if not nums:
-            return None
-        def helper(start, end, nums):
-            if start > end:
+            return
+        def helper(low=0, high=len(nums)-1):
+            if low > high:
                 return None
-            mid = start + (end-start)//2
+            mid = low + (high-low)//2
             root = TreeNode(nums[mid])
-            root.left = helper(start, mid-1, nums)
-            root.right = helper(mid+1, end, nums)
+            root.left = helper(low, mid-1)
+            root.right = helper(mid+1, high)
             return root
-        return helper(0, len(nums)-1, nums)
+        return helper()
+
 
         
 # @lc code=end

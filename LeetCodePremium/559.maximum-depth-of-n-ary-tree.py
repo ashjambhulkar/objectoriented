@@ -21,6 +21,7 @@ class Solution:
             return 1
         else:
             height = [self.maxDepth(x) for x in root.children]
-            return max(height) + 1
+        return max(height)+1
+
 # @lc code=end
 

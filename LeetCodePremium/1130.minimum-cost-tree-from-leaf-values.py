@@ -5,15 +5,15 @@
 #
 
 # @lc code=start
+# O(N^2) | O(N)
 class Solution:
     def mctFromLeafValues(self, arr: List[int]) -> int:
-        # Time O(N ^ 2)
-        # Space O(N)
-        result = 0
+        total = 0
         while len(arr) > 1:
-            i = arr.index(min(arr))
-            result += min(arr[i-1:i]+arr[i+1:i+2]) * arr.pop(i)
-        return result
+            index = arr.index(min(arr))
+            total += min(arr[index-1:index]+arr[index+1:index+2]) * arr.pop(index)
+        return total
+        
 
         
 # @lc code=end

@@ -20,6 +20,7 @@ class Solution:
 					return False
 			return helper(root.left, left, root.val) and helper(root.right, root.val, right)
 		return helper(root)
-        
+
+ 
 # @lc code=end
 
