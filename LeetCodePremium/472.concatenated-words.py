@@ -7,17 +7,29 @@
 # @lc code=start
 class Solution:
     def findAllConcatenatedWordsInADict(self, words: List[str]) -> List[str]:
-        test = set(words)
-        result = []
-        for x in words:
-            start = 0
-            count = 0
-            for end in range(len(x)):
-                if x[start:end+1] in test:
-                    start = end+1
-                    count += 1
-            if count > 1:
-                result.append(x)
-        return result
+        self.result = []
+        self.words = set(words)
+        for word in words:
+            if self.dfs(word):
+                self.result.append(word)
+        return self.result
+
+
+    def dfs(self, word):
+        for i in range(1, len(word)):
+            left = word[0:i]
+            right = word[i:]
+
+            if left in self.words and right in self.words:
+                return True
+            if left in self.words and self.dfs(right):
+                return True
+            if right in self.words and self.dfs(left):
+                return True
+        return False
+
+        
 # @lc code=end
+
+
 
